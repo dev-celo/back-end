@@ -1,13 +1,7 @@
-import express from "express";
-import climaRouter from "./routes/climaRoutes.js";
+import app from "./app.js";
 
-const app = express();
+const PORT = process.env.PORT || 3001;
 
-app.use(express.json());
-app.use("/api/clima", climaRouter);
-
-export default app;
-
-if (process.env.NODE_ENV !== "test") {
-  app.listen(3001, () => console.log("API rodando na porta 3001"));
-}
+app.listen(PORT, () => {
+  console.log(`API rodando na porta ${PORT}`);
+});
