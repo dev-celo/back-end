@@ -33,12 +33,14 @@ function checkRateLimit() {
 }
 
 export async function fetchClimaData() {
+  const cached = cache.get("climaData");
+  if (cached) {
+  return cached;
+}
+
   if (!checkRateLimit()) {
     throw new Error("Limite diário de consultas do clima atingido.");
   }
-
-  const cached = cache.get("climaData");
-  if (cached) return cached;
 
   const promises = locations.map(async ({ name, state, country, lat, lon }) => {
     const url = `${BASE_URL}?lat=${lat}&lon=${lon}&units=metric&appid=${API_KEY}&lang=pt_br`;
