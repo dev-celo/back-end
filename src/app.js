@@ -3,6 +3,7 @@ import cors from "cors";
 import climaRoutes from "./routes/climaRoutes.js";
 import noticiasRoutes from "./routes/noticiasRoute.js";
 import cotacaoRoutes from "./routes/cotacaoRoutes.js";
+import postRoutes from "./routes/postRoutes.js";
 
 const app = express();
 
@@ -14,5 +15,6 @@ app.use(express.json());
 app.use("/api/clima", climaRoutes);
 app.use("/api/noticias", noticiasRoutes);
 app.use("/api/cotacao", cotacaoRoutes);
+app.use("/api/posts", postRoutes);
 
 export default app;
